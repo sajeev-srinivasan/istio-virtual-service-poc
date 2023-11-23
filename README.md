@@ -12,7 +12,7 @@ Without istio, the nginx service will route traffic in 50-50 fashion to both dep
 
 ## Istio Setup
 - One ingress gateway
-- One virtual service for nginx service
+- One virtual service
 - One destination rule for nginx service
 
 ## Requirement
