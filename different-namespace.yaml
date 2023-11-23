@@ -1,0 +1,16 @@
+apiVersion: v1
+kind: Namespace
+metadata:
+  name: sample
+---
+apiVersion: v1
+kind: Pod
+metadata:
+  name: nginx
+  namespace: sample
+  labels:
+    name: nginx
+spec:
+  containers:
+    - name: nginx
+      image: nginx:latest
