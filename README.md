@@ -51,9 +51,17 @@ spec:
 ```
 
 ### Parameter definitions
-**spec.hosts:** Hosts (urls called by client) can be in any form like load balancer domain name (Istio ingress LB) or kubernetes service name (FQDN) or a wildcard pattern. Only when clients use these urls, the defined routing configurations will be executed.
+**spec.hosts:** Hosts (url in the host header of client request) can be in any form like load balancer domain name (Istio ingress LB) or kubernetes service name (FQDN) or a wildcard pattern. Only when clients use these urls, the defined routing configurations will be executed.
 
 For example, clients outside the cluster will use the Istio ingress load balancer url and clients inside the cluster will use the K8s service DNS name (nginx-service.default.svc.cluster.local);
+
+The hosts values are validated from the host header of the client requests.
+
+if the host header of the request is same as the host defined in the virtual service (as well as gateway), the request enter the service mesh.
+![Alt text](image-1.png)
+
+if the host header of the request is not same as the host defined in the virtual service (as well as gateway), the service mesh can't find the requested resource.
+![Alt text](image-2.png)
 
 **spec.gateway:** The names of gateways and sidecars that should apply these routes. 
 - When this field is omitted, the default gateway (mesh) will be used, which would **apply the rule to all sidecars in the mesh**. 
