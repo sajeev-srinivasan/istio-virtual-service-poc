@@ -76,4 +76,4 @@ For more details refer [Virtual Serivce](https://istio.io/latest/docs/reference/
 
 With above configuration, the traffic routing defined in the virtual service is applicable only for the **first two traffic requirements**. 
 
-For the client outside the istio injected namespace, this virtual service config is not applicable, as the client pod will not have the envoy proxy.
+For the client outside the istio injected namespace, this virtual service config is not applicable, as the client pod will not have the envoy proxy. However, if the request is made via the ingress url instead of k8s service, the canary will happen.
